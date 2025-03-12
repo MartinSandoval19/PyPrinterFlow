@@ -4,6 +4,19 @@ from tkinter import filedialog
 from tkinterdnd2 import DND_FILES, TkinterDnD
 import pyautogui
 import time
+from selenium import webdriver
+from selenium.webdriver.edge.service import Service
+from selenium.webdriver.edge.options import Options
+
+web_driver_path = 'edgedriver/msedgedriver.exe'
+
+edgeOptions = Options()
+edgeOptions.add_argument('--headless')
+edgeOptions.add_argument(f'--disable-gpu')
+edgeOptions.add_argument(f'--disable-infobars')
+edgeOptions.add_argument(f'--disable-extensions')
+edgeOptions.add_argument(f'--log-level=3')
+edgeOptions.add_argument('--no-sandox')
 
 # Upload files from select button
 def select_files():
@@ -17,12 +30,14 @@ def drag_files(event):
         file_list.insert(tkinter.END, file)
 
 def open_files():
+    service = Service(web_driver_path)
+
     for i in range(file_list.size()):
         file = file_list.get(i)
         try:
             path = file.replace("/", "\\")
-            command = f'start msedge "{path}"'
-            os.system(command)
+            driver = webdriver.Edge(service=service, options=edgeOptions)
+            driver.get(f'file:///{path}')
             time.sleep(1)
 
             pyautogui.hotkey('ctrl', 'p')
@@ -30,6 +45,8 @@ def open_files():
 
             pyautogui.press('enter')
             time.sleep(2)
+            print('Se ha impreso el archivo {path}')
+            driver.quit()
         except Exception as e:
             print(f'Error opening file {file}: {e}')
     
