@@ -29,8 +29,8 @@ def open_files():
             time.sleep(2)
 
             print('Here the Enter key should be pressed to print the file')
-            # pyautogui.press('enter')
-            # time.sleep(2)
+            pyautogui.press('enter')
+            time.sleep(2)
         except Exception as e:
             print(f'Error opening file {file}: {e}')
     
