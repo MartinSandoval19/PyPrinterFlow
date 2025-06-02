@@ -63,8 +63,8 @@ style.configure('TButton', background='#444', foreground='white', font=('Arial',
 style.map('TButton', background=[('active', '#666')])  # Hover
 
 # Top
-frame_top = tkinter.Frame(root, bg='#333', padx=10, pady=10)
-frame_top.pack(fill='x')
+frame_top = customtkinter.CTkFrame(root)
+frame_top.pack(fill='x', padx=10, pady=10)
 label_printer = tkinter.Label(frame_top, text='Configuración de impresión', fg='white', bg='#333')
 label_printer.pack(side='left', padx=5)
 duplex_options = ['Una Cara', 'Doble Cara']
@@ -79,16 +79,16 @@ if printers:
     printer_combobox.current(0)
 
 # Center
-frame_center = tkinter.Frame(root, bg='#2E2E2E', padx=10, pady=10)
-frame_center.pack(expand=True, fill='both')
+frame_center = customtkinter.CTkFrame(root)
+frame_center.pack(expand=True, fill='both', padx=10, pady=10)
 file_list = tkinter.Listbox(frame_center, bg='#444', fg='white', selectbackground='#00A3E0', selectforeground='white', selectmode=tkinter.MULTIPLE)
 file_list.pack(expand=True, fill='both', padx=10, pady=10)
 file_list.drop_target_register(DND_FILES)
 file_list.dnd_bind('<<Drop>>', handle_dropped_files)
 
 # Bottom
-frame_bottom = tkinter.Frame(root, bg='#333', padx=10, pady=10)
-frame_bottom.pack(fill='x')
+frame_bottom = customtkinter.CTkFrame(root)
+frame_bottom.pack(fill='x', padx=10, pady=10)
 btn_print = ttk.Button(frame_bottom, text='Imprimir', command=print_files)
 btn_print.pack(side='right', padx=10)
 btn_remove = ttk.Button(frame_bottom, text='Eliminar Seleccionados', command=remove_selected_files)
