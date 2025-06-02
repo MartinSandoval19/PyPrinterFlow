@@ -2,14 +2,17 @@ import os
 import tkinter
 from tkinter import ttk, messagebox
 from tkinterdnd2 import TkinterDnD, DND_FILES
+import customtkinter
 import win32api
 import win32print
 
+#Global config
+customtkinter.set_appearance_mode("dark")
+
 # Config main panel
-root = TkinterDnD.Tk()
+root = customtkinter.CTk()
 root.title('Asistente de impresión')
 root.geometry('600x400')
-root.config(bg='#2E2E2E')
 
 # Funciones
 def get_all_printers():
