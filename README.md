@@ -1,13 +1,13 @@
 # PyPrinterFlow  
-**PyPrinterFlow** is a lightweight and modern assistant designed to streamline the batch printing of PDF files, with preview thumbails, smart certificate removal, and flexible printing options. 
+**PyPrinterFlow** is a lightweight and modern assistant designed to streamline the batch printing of PDF files, with preview thumbails, smart certificate page removal, and flexible printing options. 
 
 ## 🚀 Features  
 - 📌 **Modern and intuitive graphical interface** built with CustomTkinter   
 - 🔄 **Drag and drop** support for quickly adding files
-- 🖼️ **PDF thumbails preview** for visual identification
+- 🖼️ **PDF thumbnails preview** for visual identification
 - ❌ **Remove individual files** or **clear all** before printing  
 - 🖨️ **Printer selection** with duplex (double-sided) support  
-- 📄 **Certificate management:** keep or remove certificate pages automatically
+- 📄 **Certificate management:** keep or remove certificate pages automatically (last two pages)
 - 📦 **Portable standalone executable** (no installation required)
 
 ## 📦 Installation & Usage  
