@@ -7,6 +7,7 @@ from PIL import Image
 import fitz  # PyMuPDF
 import win32print
 import subprocess
+import webbrowser
 
 class PrintAssistantApp(TkinterDnD.Tk):
     def __init__(self):
@@ -87,6 +88,9 @@ class PrintAssistantApp(TkinterDnD.Tk):
 
         btn_delete_all = ctk.CTkButton(footer, text="Borrar Todo", fg_color="#A33", command=self._delete_all)
         btn_delete_all.pack(side="left", padx=20, pady=10)
+
+        btn_about = ctk.CTkButton(footer, text="About", fg_color="#5555AA", command=self._open_about)
+        btn_about.pack(side="left", padx=10, pady=10)
 
         btn_print = ctk.CTkButton(footer, text="Imprimir", fg_color="#00A36C", command=self._print_files)
         btn_print.pack(side="right", padx=20, pady=10)
@@ -223,6 +227,30 @@ class PrintAssistantApp(TkinterDnD.Tk):
 
         self._delete_all()
         CTkMessagebox(title="Impresión completada", message="Todas las impresiones se han enviado", icon="check")
+
+    # ----------- About Dialog -----------
+    def _open_about(self):
+        about_window = ctk.CTkToplevel(self)
+        about_window.title("About")
+        about_window.geometry("400x250")
+        about_window.resizable(False, False)
+        about_window.attributes("-topmost", True)
+
+        # Center content
+        about_window.grid_rowconfigure(0, weight=1)
+        about_window.grid_columnconfigure(0, weight=1)
+
+        frame = ctk.CTkFrame(about_window, fg_color="#2D2D2D", corner_radius=10)
+        frame.pack(expand=True, fill="both", padx=20, pady=20)
+
+        ctk.CTkLabel(frame, text="PyPrinterFlow", font=("Arial", 20, "bold")).pack(pady=(10, 10))
+        developed_lbl = ctk.CTkLabel(frame, text="Developed by: MartinSandoval19", font=("Arial", 14), text_color="#00A2FF", cursor="hand2")
+        developed_lbl.pack(pady=5)
+        developed_lbl.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/MartinSandoval19"))
+        ctk.CTkLabel(frame, text="v2.0.0", font=("Arial", 14)).pack(pady=5)
+        notes_lbl = ctk.CTkLabel(frame, text="Release Notes", font=("Arial", 14), text_color="#00A2FF", cursor="hand2")
+        notes_lbl.pack(pady=5)
+        notes_lbl.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/MartinSandoval19/PyPrinterFlow/releases"))
 
 def main():
     app = PrintAssistantApp()
