@@ -1,20 +1,24 @@
 # PyPrinterFlow  
-**PyPrinterFlow** is a lightweight tool designed to streamline the batch opening and printing of PDF files.  
+**PyPrinterFlow** is a lightweight and modern assistant designed to streamline the batch printing of PDF files, with preview thumbails, smart certificate removal, and flexible printing options. 
 
 ## 🚀 Features  
-- 📌 **Intuitive graphical interface** for easy navigation  
-- 🔄 **Drag and drop** support for adding files effortlessly  
-- ❌ **Remove files** from the queue before printing  
-- 🖨️ **Printer selection** for greater flexibility  
-- 📄 **Single-sided or double-sided printing options**  
+- 📌 **Modern and intuitive graphical interface** built with CustomTkinter   
+- 🔄 **Drag and drop** support for quickly adding files
+- 🖼️ **PDF thumbails preview** for visual identification
+- ❌ **Remove individual files** or **clear all** before printing  
+- 🖨️ **Printer selection** with duplex (double-sided) support  
+- 📄 **Certificate management:** keep or remove certificate pages automatically
+- 📦 **Portable standalone executable** (no installation required)
 
 ## 📦 Installation & Usage  
 ### 🖥️ Requirements  
 - Python **3.12.9+**  
-- **Tkinter**  
+- **customtkinter**
+- **CTkMessagebox**  
 - **tkinterdnd2**  
-- **win32api**  
-- **win32print**  
+- **pywin32** (win32api, win32print)
+- **pillow**
+- **PyMuPDF** (fitz)
 
 ### ▶️ Running the Application  
 1. Download the executable (`.exe`) from the [Releases](https://github.com/MartinSandoval19/PyPrinterFlow/releases) section.  
@@ -24,12 +28,12 @@
 ### ▶️ Running from Source  
 To run PyPrinterFlow from source, ensure you have all dependencies installed:  
 ```bash
-pip install tkinterdnd2 pyautogui pywin32
+pip install customtkinter CTkMessagebox tkinterdnd2 pywin32 pillow PyMuPDF
 ```
 
 Then, execute the script:
 ```bash
-python print.py
+python src/print.py
 ```
 
 ### 📦 Generating an Executable (Standalone Installer)
@@ -47,13 +51,11 @@ pyinstaller --onefile --noconsole \
 --add-data "path/to/SumatraPDF.exe;SumatraPDF" \
 --hidden-import=tkinter \
 --hidden-import=tkinter.ttk \
---hidden-import=tkinter.messagebox \
 --hidden-import=tkinterdnd2 \
---hidden-import=pyautogui \
 --hidden-import=win32api \
 --hidden-import=win32print \
 --collect-all tkinterdnd2 \
-print.py
+src/print.py
 ```
 
 - Replace "path/to/tkinterdnd2" with the correct path where tkinterdnd2 is installed.
